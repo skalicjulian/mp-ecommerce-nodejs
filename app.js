@@ -1,9 +1,12 @@
 var express = require('express');
 var exphbs  = require('express-handlebars');
 const mercadopago = require('./mercadopago')
+const bodyParser = require('body-parser')
 
 var app = express();
- 
+
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json()) 
 app.engine('handlebars', exphbs());
 app.set('view engine', 'handlebars');
 
@@ -31,7 +34,7 @@ app.get('/pending', (req, res) => {
 })
 
 app.post('/notifications', (req, res) => {
-    console.log("Notification:", req)
+    console.log("Notification:", req.body)
     res.status(200).send();
 })
 
