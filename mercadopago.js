@@ -65,6 +65,7 @@ const createPreference = async ({img, title, price}) => {
   
     try {
         const response = await mercadopago.preferences.create(preference)
+        console.log('Preference id:', response.body.id)
         return response.body.init_point;
     } catch (error) {
         console.log(error);
