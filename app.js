@@ -30,8 +30,8 @@ app.get('/pending', (req, res) => {
     res.render('pending', message );
 })
 
-app.post('/webhook', (req, res) => {
-    console.log("Notification:", req.body)
+app.post('/notifications', (req, res) => {
+    console.log("Notification:", req)
     res.status(200).send();
 })
 

@@ -60,7 +60,7 @@ const createPreference = async ({img, title, price}) => {
     back_urls,
     payment_methods,
     auto_return: 'approved',
-    notification_url: `${config.baseUrl}/webhook`
+    notification_url: `${config.baseUrl}/notifications?source_news=webhooks`
   };
   
     try {
