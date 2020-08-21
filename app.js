@@ -25,12 +25,12 @@ app.get('/success', (req, res) => {
 
 app.get('/failure', (req, res) => {
     const message = 'Pago fallido'
-    res.render('failure', message);
+    res.render('failure', { message });
 })
 
 app.get('/pending', (req, res) => {
     const message = 'Pago pendiente'
-    res.render('pending', message );
+    res.render('pending', {message} );
 })
 
 app.post('/notifications', (req, res) => {
