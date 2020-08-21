@@ -8,6 +8,8 @@ mercadopago.configure({
 
 const createPreference = async ({img, title, price}) => {
    
+  var picture_url = `${config.baseUrl}/${img}`
+
   const back_urls = {
     success: `${config.baseUrl}/success`,
     pending: `${config.baseUrl}/pending`,
@@ -50,7 +52,7 @@ const createPreference = async ({img, title, price}) => {
         id: 1234,
         title,
         description: 'Dispositivo móvil de Tienda e-commerce',
-        picture_url: img,
+        picture_url,
         unit_price: parseFloat(price),
         quantity : 1
       }
