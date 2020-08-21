@@ -1,5 +1,5 @@
 
 
-const baseUrl = 'https://skalicjulia-mp-commerce-nodejs.herokuapp.com'
+const baseUrl = 'https://skalicjulian-mp-ecommerce-node.herokuapp.com/'
 
 module.exports = { baseUrl }
