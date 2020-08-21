@@ -1,6 +1,7 @@
 var express = require('express');
 var exphbs  = require('express-handlebars');
- 
+const mercadopago = require('./mercadopago')
+
 var app = express();
  
 app.engine('handlebars', exphbs());
@@ -10,12 +11,32 @@ app.get('/', function (req, res) {
     res.render('home');
 });
 
-app.get('/detail', function (req, res) {
-    res.render('detail', req.query);
+app.get('/detail', async (req, res) => {
+    const init_point = await mercadopago.createPreference(req.query)
+    res.render('detail', {...req.query, init_point});
 });
+
+app.get('/success', (req, res) => {
+    res.render('success', req.query);
+})
+
+app.get('/failure', (req, res) => {
+    const message = 'Pago fallido'
+    res.render('failure', message);
+})
+
+app.get('/pending', (req, res) => {
+    const message = 'Pago pendiente'
+    res.render('pending', message );
+})
+
+app.post('/webhook', (req, res) => {
+    console.log("Notification:", req.body)
+    res.status(200).send();
+})
 
 app.use(express.static('assets'));
  
 app.use('/assets', express.static(__dirname + '/assets'));
  
-app.listen(3000);
+app.listen(process.env.PORT || 3000);

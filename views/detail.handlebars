@@ -1,4 +1,4 @@
-
+<script src="https://www.mercadopago.com/v2/security.js" view="detail"></script>
 <div class="as-search-wrapper" role="main">
     <div class="as-navtuck-wrapper">
         <div class="as-l-fullwidth  as-navtuck" data-events="event52">
@@ -84,7 +84,9 @@
                                     {{ unit }}
                                 </h3>
                             </div>
-                            <button type="submit" class="mercadopago-button" formmethod="post">Pagar</button>
+                            <button class="mercadopago-button" onclick="window.location.href='{{init_point}}';">
+                                Pagar
+                            </button>
                         </div>
                     </div>
                 </div>
